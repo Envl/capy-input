@@ -1,0 +1,630 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01A9178A3A53C898CDF5B93F /* CompositionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C71DF7C08F72A136A94B5 /* CompositionMonitor.swift */; };
+		03677AED6E5844B9F17E058A /* RimeEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAC14692DB445FDD864EBA5 /* RimeEngine.m */; };
+		048B721B8D55B36030227272 /* SyncClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE10E3574D47AC20AD78C97 /* SyncClient.swift */; };
+		077A69DB17C83085F0CC0899 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D6C1712949BAD2C4EF8CFD /* Secret.swift */; };
+		09DD9DBFE17CBD856C090AEE /* InterfaceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827F29A4F3F3BA1034E7B2F3 /* InterfaceLanguage.swift */; };
+		0D54F259C851A51D65B70AC7 /* RimeInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B565C1E143D7D7C10A9034EA /* RimeInstallation.swift */; };
+		20040BD0A1617D68C9282647 /* MacDictionarySync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E9F6A1B9E135802D5FA76 /* MacDictionarySync.swift */; };
+		417753BC79708FE3A32667B2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F917E42C576CA55586D3CF89 /* Localizable.xcstrings */; };
+		4F9E0FBED9BCD66BC88DAE23 /* LearnedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755A536059837A0FF57FC /* LearnedDictionary.swift */; };
+		572BF8E6A953F3EED94B1128 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60026C7A3760A2AA11606815 /* AppError.swift */; };
+		5B1B8051F536034770464B1C /* LibraryArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E71CC006B6D58A369B35E01 /* LibraryArchive.swift */; };
+		5DC44AA1823D0DFE00FEBBA8 /* LibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177F6A4BDD3E2AC10E3205B9 /* LibraryOperations.swift */; };
+		624D65F4FF0D4A714E7AA2B4 /* Licenses in Resources */ = {isa = PBXBuildFile; fileRef = 7F04DE51C6340D94C3F46AC8 /* Licenses */; };
+		62A56385AE65680FA6BEC881 /* WordIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82880F8297B901819D15980D /* WordIndex.swift */; };
+		63D38F451BE3EAA8399242DF /* CapyCompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B9025D24F0AF54AA2893A /* CapyCompanionApp.swift */; };
+		6512FC19E509E13ACA300C08 /* LearnedSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8367D90AD37136CE6B10F7BA /* LearnedSync.swift */; };
+		6CE2BFC589B34CEB6942D70D /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2354E9247AD54DF83E1FC44E /* L10n.swift */; };
+		6E8F6381BEFA2FCD90E1E73C /* LibraryValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043CAA9E254E4A5C78F6EF1 /* LibraryValidation.swift */; };
+		7F5BEA1834945DA618B47222 /* ScreenWords in Resources */ = {isa = PBXBuildFile; fileRef = 60A6ED30B8DEC6657D8C1266 /* ScreenWords */; };
+		80946F79D540D2C7A12A4647 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B631F08E9A0FF0199E5DA8FB /* Snapshot.swift */; };
+		80F74964C4F66E91934D3517 /* RimeSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B148913F7689C20CDC260F /* RimeSchema.swift */; };
+		834BF27DA63610912302060A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6CE34D5C2E17995859C42E4 /* Assets.xcassets */; };
+		87D8972E847B3F81697F0265 /* ProfileImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72807718806F70851243A1F0 /* ProfileImport.swift */; };
+		8AAA224B91A091D464B1EE39 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCDFD92AE2CAFD657FED37D /* LibraryView.swift */; };
+		8D5B7EF8B997551CCA3D8247 /* LibraryInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6689793D534076BAE8D4777 /* LibraryInstallation.swift */; };
+		8FB4DED58CA53695DC866BD5 /* ScreenReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6BF0B4661B09AC0624EB0E /* ScreenReader.swift */; };
+		90FC0A74FABC3C23B54637E4 /* SharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1028FBE6EB9FD367EDC34D /* SharedSettings.swift */; };
+		978FD5AE2A64557DB2713713 /* MacAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F007E64ACAE5B223B54C313E /* MacAppDelegate.swift */; };
+		A109AB0D2011011472FB4A0E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F75CB622A8A05363752233A8 /* PrivacyInfo.xcprivacy */; };
+		AD56360382A680D98882DFFA /* librime-dynamic.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC4E657B102DC3EC1BDFF263 /* librime-dynamic.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B041A6661F025EDFEBB2E668 /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = AC317C2332B9E50064F92F83 /* Yams */; };
+		BB09DB1426EF9A94399540D1 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 629647793FAF4BB763125119 /* Sparkle */; };
+		C7A10CF364C5E2B089E7F2C2 /* ScreenWordSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB5902F5F9ABCA70926EE7 /* ScreenWordSetup.swift */; };
+		C9C97D101ABC7896BD5AEBE0 /* librime-dynamic.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC4E657B102DC3EC1BDFF263 /* librime-dynamic.xcframework */; };
+		D09C1CCF00EE749418E4E17E /* RimeLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F366534186082CA0F113D9 /* RimeLibrary.swift */; };
+		D431A83B93165FCEE1E26077 /* LearnedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605D492F0F2642AB523E9445 /* LearnedWordsView.swift */; };
+		D65074824FD343BB39208491 /* LibraryCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C237F4039BAFA576CD0C9 /* LibraryCloud.swift */; };
+		E67ACE5621E67756049A2349 /* AppUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AF77B75BAAC7444AF5068 /* AppUpdater.swift */; };
+		EFE9BC8D5C8F44D1AA39A893 /* RimeSnapshotExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D10051DE0E76321C19A43F /* RimeSnapshotExport.swift */; };
+		FE6D8BA27C4917EBF2B70B87 /* ScreenWordSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAA190FB8493C38B0894492 /* ScreenWordSuggestions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		974E5665116E04A48DD2D320 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AD56360382A680D98882DFFA /* librime-dynamic.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		01E755A536059837A0FF57FC /* LearnedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedDictionary.swift; sourceTree = "<group>"; };
+		064AF77B75BAAC7444AF5068 /* AppUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdater.swift; sourceTree = "<group>"; };
+		089E9F6A1B9E135802D5FA76 /* MacDictionarySync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacDictionarySync.swift; sourceTree = "<group>"; };
+		0DE10E3574D47AC20AD78C97 /* SyncClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncClient.swift; sourceTree = "<group>"; };
+		177F6A4BDD3E2AC10E3205B9 /* LibraryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryOperations.swift; sourceTree = "<group>"; };
+		1D6BF0B4661B09AC0624EB0E /* ScreenReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenReader.swift; sourceTree = "<group>"; };
+		2354E9247AD54DF83E1FC44E /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		2E71CC006B6D58A369B35E01 /* LibraryArchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryArchive.swift; sourceTree = "<group>"; };
+		46F366534186082CA0F113D9 /* RimeLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimeLibrary.swift; sourceTree = "<group>"; };
+		481C71DF7C08F72A136A94B5 /* CompositionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionMonitor.swift; sourceTree = "<group>"; };
+		585206093AD76658B59C81D3 /* Sync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sync.entitlements; sourceTree = "<group>"; };
+		5DAA190FB8493C38B0894492 /* ScreenWordSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenWordSuggestions.swift; sourceTree = "<group>"; };
+		60026C7A3760A2AA11606815 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		6043CAA9E254E4A5C78F6EF1 /* LibraryValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryValidation.swift; sourceTree = "<group>"; };
+		605D492F0F2642AB523E9445 /* LearnedWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedWordsView.swift; sourceTree = "<group>"; };
+		60A6ED30B8DEC6657D8C1266 /* ScreenWords */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ScreenWords; path = Resources/ScreenWords; sourceTree = SOURCE_ROOT; };
+		60D16F4ADF35DB317978FEE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		65415410B4FB3D55E03D6257 /* capy-companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "capy-companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72807718806F70851243A1F0 /* ProfileImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImport.swift; sourceTree = "<group>"; };
+		7F04DE51C6340D94C3F46AC8 /* Licenses */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Licenses; path = Generated/Rime/Licenses; sourceTree = SOURCE_ROOT; };
+		827F29A4F3F3BA1034E7B2F3 /* InterfaceLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceLanguage.swift; sourceTree = "<group>"; };
+		82880F8297B901819D15980D /* WordIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordIndex.swift; sourceTree = "<group>"; };
+		8367D90AD37136CE6B10F7BA /* LearnedSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedSync.swift; sourceTree = "<group>"; };
+		8C0C237F4039BAFA576CD0C9 /* LibraryCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCloud.swift; sourceTree = "<group>"; };
+		8C1B9025D24F0AF54AA2893A /* CapyCompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapyCompanionApp.swift; sourceTree = "<group>"; };
+		B4AB5902F5F9ABCA70926EE7 /* ScreenWordSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenWordSetup.swift; sourceTree = "<group>"; };
+		B565C1E143D7D7C10A9034EA /* RimeInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimeInstallation.swift; sourceTree = "<group>"; };
+		B631F08E9A0FF0199E5DA8FB /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
+		B6CE34D5C2E17995859C42E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B7D10051DE0E76321C19A43F /* RimeSnapshotExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimeSnapshotExport.swift; sourceTree = "<group>"; };
+		B7D6C1712949BAD2C4EF8CFD /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		BCAC14692DB445FDD864EBA5 /* RimeEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RimeEngine.m; sourceTree = "<group>"; };
+		BCCDFD92AE2CAFD657FED37D /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		D0B148913F7689C20CDC260F /* RimeSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimeSchema.swift; sourceTree = "<group>"; };
+		D6689793D534076BAE8D4777 /* LibraryInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryInstallation.swift; sourceTree = "<group>"; };
+		DA1028FBE6EB9FD367EDC34D /* SharedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettings.swift; sourceTree = "<group>"; };
+		F007E64ACAE5B223B54C313E /* MacAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAppDelegate.swift; sourceTree = "<group>"; };
+		F70DE44DBBEABC823F2071E4 /* RimeEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RimeEngine.h; sourceTree = "<group>"; };
+		F75CB622A8A05363752233A8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		F917E42C576CA55586D3CF89 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		FC4E657B102DC3EC1BDFF263 /* librime-dynamic.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "librime-dynamic.xcframework"; path = "Vendor/librime-dynamic.xcframework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C97AEBD5C9A44D867626C37A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B041A6661F025EDFEBB2E668 /* Yams in Frameworks */,
+				BB09DB1426EF9A94399540D1 /* Sparkle in Frameworks */,
+				C9C97D101ABC7896BD5AEBE0 /* librime-dynamic.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49D8EE0CA7D57FBB3A68C445 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				827F29A4F3F3BA1034E7B2F3 /* InterfaceLanguage.swift */,
+				2354E9247AD54DF83E1FC44E /* L10n.swift */,
+				F917E42C576CA55586D3CF89 /* Localizable.xcstrings */,
+			);
+			name = Localization;
+			path = Apple/Localization;
+			sourceTree = "<group>";
+		};
+		556A5A56B18678F9426083C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC4E657B102DC3EC1BDFF263 /* librime-dynamic.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7728B01451CFD7F30B73CA0F = {
+			isa = PBXGroup;
+			children = (
+				7F04DE51C6340D94C3F46AC8 /* Licenses */,
+				60A6ED30B8DEC6657D8C1266 /* ScreenWords */,
+				93C3F3C85946FD89674D783B /* Bridge */,
+				49D8EE0CA7D57FBB3A68C445 /* Localization */,
+				9869E6D8297E31CFBF244EE0 /* Mac */,
+				FD2519EC49300991D6228B8D /* Shared */,
+				556A5A56B18678F9426083C5 /* Frameworks */,
+				EA7BBF3E3A16BBF9632C972E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		93C3F3C85946FD89674D783B /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				F70DE44DBBEABC823F2071E4 /* RimeEngine.h */,
+				BCAC14692DB445FDD864EBA5 /* RimeEngine.m */,
+			);
+			name = Bridge;
+			path = Apple/Bridge;
+			sourceTree = "<group>";
+		};
+		9869E6D8297E31CFBF244EE0 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				064AF77B75BAAC7444AF5068 /* AppUpdater.swift */,
+				B6CE34D5C2E17995859C42E4 /* Assets.xcassets */,
+				8C1B9025D24F0AF54AA2893A /* CapyCompanionApp.swift */,
+				60D16F4ADF35DB317978FEE8 /* Info.plist */,
+				605D492F0F2642AB523E9445 /* LearnedWordsView.swift */,
+				D6689793D534076BAE8D4777 /* LibraryInstallation.swift */,
+				177F6A4BDD3E2AC10E3205B9 /* LibraryOperations.swift */,
+				6043CAA9E254E4A5C78F6EF1 /* LibraryValidation.swift */,
+				BCCDFD92AE2CAFD657FED37D /* LibraryView.swift */,
+				F007E64ACAE5B223B54C313E /* MacAppDelegate.swift */,
+				089E9F6A1B9E135802D5FA76 /* MacDictionarySync.swift */,
+				72807718806F70851243A1F0 /* ProfileImport.swift */,
+				B565C1E143D7D7C10A9034EA /* RimeInstallation.swift */,
+				B7D10051DE0E76321C19A43F /* RimeSnapshotExport.swift */,
+				B7D6C1712949BAD2C4EF8CFD /* Secret.swift */,
+				585206093AD76658B59C81D3 /* Sync.entitlements */,
+				CFB4BD752C0B104D70892137 /* ScreenWords */,
+			);
+			name = Mac;
+			path = Apple/Mac;
+			sourceTree = "<group>";
+		};
+		CFB4BD752C0B104D70892137 /* ScreenWords */ = {
+			isa = PBXGroup;
+			children = (
+				481C71DF7C08F72A136A94B5 /* CompositionMonitor.swift */,
+				1D6BF0B4661B09AC0624EB0E /* ScreenReader.swift */,
+				B4AB5902F5F9ABCA70926EE7 /* ScreenWordSetup.swift */,
+				5DAA190FB8493C38B0894492 /* ScreenWordSuggestions.swift */,
+				B631F08E9A0FF0199E5DA8FB /* Snapshot.swift */,
+				82880F8297B901819D15980D /* WordIndex.swift */,
+			);
+			path = ScreenWords;
+			sourceTree = "<group>";
+		};
+		EA7BBF3E3A16BBF9632C972E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65415410B4FB3D55E03D6257 /* capy-companion.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD2519EC49300991D6228B8D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				60026C7A3760A2AA11606815 /* AppError.swift */,
+				01E755A536059837A0FF57FC /* LearnedDictionary.swift */,
+				8367D90AD37136CE6B10F7BA /* LearnedSync.swift */,
+				2E71CC006B6D58A369B35E01 /* LibraryArchive.swift */,
+				8C0C237F4039BAFA576CD0C9 /* LibraryCloud.swift */,
+				F75CB622A8A05363752233A8 /* PrivacyInfo.xcprivacy */,
+				46F366534186082CA0F113D9 /* RimeLibrary.swift */,
+				D0B148913F7689C20CDC260F /* RimeSchema.swift */,
+				DA1028FBE6EB9FD367EDC34D /* SharedSettings.swift */,
+				0DE10E3574D47AC20AD78C97 /* SyncClient.swift */,
+			);
+			name = Shared;
+			path = Apple/Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B6E5A71BE596E686EDBB0347 /* CapyCompanion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8E3A525272529286A97DDF7 /* Build configuration list for PBXNativeTarget "CapyCompanion" */;
+			buildPhases = (
+				64A1863D603D866941EF01EC /* Validate localizations */,
+				D2BB324E0DA5CC67D4B44EAE /* Sources */,
+				E2BE94D7C0614474E04D55C6 /* Resources */,
+				C97AEBD5C9A44D867626C37A /* Frameworks */,
+				974E5665116E04A48DD2D320 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CapyCompanion;
+			packageProductDependencies = (
+				AC317C2332B9E50064F92F83 /* Yams */,
+				629647793FAF4BB763125119 /* Sparkle */,
+			);
+			productName = CapyCompanion;
+			productReference = 65415410B4FB3D55E03D6257 /* capy-companion.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		70913687EEA57EB691E1FA00 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					B6E5A71BE596E686EDBB0347 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = DA12E14B99B51A2BDB8F0D7A /* Build configuration list for PBXProject "CapyCompanion" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				"zh-Hans",
+				"zh-Hant",
+			);
+			mainGroup = 7728B01451CFD7F30B73CA0F;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				4E2140570B7E660C4E5F1D0F /* XCRemoteSwiftPackageReference "Sparkle" */,
+				FAEF4AF8373CEABB179C54DF /* XCRemoteSwiftPackageReference "Yams" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = EA7BBF3E3A16BBF9632C972E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B6E5A71BE596E686EDBB0347 /* CapyCompanion */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E2BE94D7C0614474E04D55C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				834BF27DA63610912302060A /* Assets.xcassets in Resources */,
+				624D65F4FF0D4A714E7AA2B4 /* Licenses in Resources */,
+				417753BC79708FE3A32667B2 /* Localizable.xcstrings in Resources */,
+				A109AB0D2011011472FB4A0E /* PrivacyInfo.xcprivacy in Resources */,
+				7F5BEA1834945DA618B47222 /* ScreenWords in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		64A1863D603D866941EF01EC /* Validate localizations */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Scripts/localization.py",
+				"$(SRCROOT)/Apple/Localization/Localizable.xcstrings",
+				"$(SRCROOT)/Apple/Localization/L10n.swift",
+			);
+			name = "Validate localizations";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/python3 \"$SRCROOT/Scripts/localization.py\" --catalog-only";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2BB324E0DA5CC67D4B44EAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572BF8E6A953F3EED94B1128 /* AppError.swift in Sources */,
+				E67ACE5621E67756049A2349 /* AppUpdater.swift in Sources */,
+				63D38F451BE3EAA8399242DF /* CapyCompanionApp.swift in Sources */,
+				01A9178A3A53C898CDF5B93F /* CompositionMonitor.swift in Sources */,
+				09DD9DBFE17CBD856C090AEE /* InterfaceLanguage.swift in Sources */,
+				6CE2BFC589B34CEB6942D70D /* L10n.swift in Sources */,
+				4F9E0FBED9BCD66BC88DAE23 /* LearnedDictionary.swift in Sources */,
+				6512FC19E509E13ACA300C08 /* LearnedSync.swift in Sources */,
+				D431A83B93165FCEE1E26077 /* LearnedWordsView.swift in Sources */,
+				5B1B8051F536034770464B1C /* LibraryArchive.swift in Sources */,
+				D65074824FD343BB39208491 /* LibraryCloud.swift in Sources */,
+				8D5B7EF8B997551CCA3D8247 /* LibraryInstallation.swift in Sources */,
+				5DC44AA1823D0DFE00FEBBA8 /* LibraryOperations.swift in Sources */,
+				6E8F6381BEFA2FCD90E1E73C /* LibraryValidation.swift in Sources */,
+				8AAA224B91A091D464B1EE39 /* LibraryView.swift in Sources */,
+				978FD5AE2A64557DB2713713 /* MacAppDelegate.swift in Sources */,
+				20040BD0A1617D68C9282647 /* MacDictionarySync.swift in Sources */,
+				87D8972E847B3F81697F0265 /* ProfileImport.swift in Sources */,
+				03677AED6E5844B9F17E058A /* RimeEngine.m in Sources */,
+				0D54F259C851A51D65B70AC7 /* RimeInstallation.swift in Sources */,
+				D09C1CCF00EE749418E4E17E /* RimeLibrary.swift in Sources */,
+				80F74964C4F66E91934D3517 /* RimeSchema.swift in Sources */,
+				EFE9BC8D5C8F44D1AA39A893 /* RimeSnapshotExport.swift in Sources */,
+				8FB4DED58CA53695DC866BD5 /* ScreenReader.swift in Sources */,
+				C7A10CF364C5E2B089E7F2C2 /* ScreenWordSetup.swift in Sources */,
+				FE6D8BA27C4917EBF2B70B87 /* ScreenWordSuggestions.swift in Sources */,
+				077A69DB17C83085F0CC0899 /* Secret.swift in Sources */,
+				90FC0A74FABC3C23B54637E4 /* SharedSettings.swift in Sources */,
+				80946F79D540D2C7A12A4647 /* Snapshot.swift in Sources */,
+				048B721B8D55B36030227272 /* SyncClient.swift in Sources */,
+				62A56385AE65680FA6BEC881 /* WordIndex.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DC40FD3A524D9617E945D11 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(CAPY_APP_ICON_NAME)";
+				CODE_SIGN_ENTITLEMENTS = Apple/Mac/Sync.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Vendor\"",
+				);
+				INFOPLIST_FILE = Apple/Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CAPY_MAC_BUNDLE_ID)$(CAPY_BUNDLE_ID_SUFFIX)";
+				PRODUCT_NAME = "capy-companion";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = Apple/Bridge/RimeEngine.h;
+			};
+			name = Debug;
+		};
+		4C2F5A91E87A7F3B32F6E808 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CAPY_APP_GROUP = group.com.capyinput.keyboard;
+				CAPY_APP_ICON_NAME = AppIconDebug;
+				CAPY_BUNDLE_ID_SUFFIX = .debug;
+				CAPY_ENABLE_SERVER_SYNC = 1;
+				CAPY_ICLOUD_CONTAINER = iCloud.com.capyinput.keyboard;
+				CAPY_MAC_BUNDLE_ID = com.capyinput.companion;
+				CAPY_SYNC_SERVER = "";
+				CAPY_UPDATE_FEED_URL = "";
+				CAPY_UPDATE_PUBLIC_KEY = "";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ICLOUD_ENVIRONMENT = Development;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		636328272C09EAF41E31CB3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CAPY_APP_GROUP = group.com.capyinput.keyboard;
+				CAPY_APP_ICON_NAME = AppIcon;
+				CAPY_BUNDLE_ID_SUFFIX = "";
+				CAPY_ENABLE_SERVER_SYNC = 0;
+				CAPY_ICLOUD_CONTAINER = iCloud.com.capyinput.keyboard;
+				CAPY_MAC_BUNDLE_ID = com.capyinput.companion;
+				CAPY_SYNC_SERVER = "";
+				CAPY_UPDATE_FEED_URL = "";
+				CAPY_UPDATE_PUBLIC_KEY = "";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ICLOUD_ENVIRONMENT = Production;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B92358352C3B28B8B855CAB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(CAPY_APP_ICON_NAME)";
+				CODE_SIGN_ENTITLEMENTS = Apple/Mac/Sync.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Vendor\"",
+				);
+				INFOPLIST_FILE = Apple/Mac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "$(CAPY_MAC_BUNDLE_ID)$(CAPY_BUNDLE_ID_SUFFIX)";
+				PRODUCT_NAME = "capy-companion";
+				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = Apple/Bridge/RimeEngine.h;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D8E3A525272529286A97DDF7 /* Build configuration list for PBXNativeTarget "CapyCompanion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC40FD3A524D9617E945D11 /* Debug */,
+				B92358352C3B28B8B855CAB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DA12E14B99B51A2BDB8F0D7A /* Build configuration list for PBXProject "CapyCompanion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C2F5A91E87A7F3B32F6E808 /* Debug */,
+				636328272C09EAF41E31CB3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4E2140570B7E660C4E5F1D0F /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.9.2;
+			};
+		};
+		FAEF4AF8373CEABB179C54DF /* XCRemoteSwiftPackageReference "Yams" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jpsim/Yams.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		629647793FAF4BB763125119 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E2140570B7E660C4E5F1D0F /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+		AC317C2332B9E50064F92F83 /* Yams */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAEF4AF8373CEABB179C54DF /* XCRemoteSwiftPackageReference "Yams" */;
+			productName = Yams;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 70913687EEA57EB691E1FA00 /* Project object */;
+}
