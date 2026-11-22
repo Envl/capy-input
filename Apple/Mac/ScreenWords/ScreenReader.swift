@@ -1,13 +1,37 @@
 import AppKit
+import CoreText
 import ScreenCaptureKit
 import Vision
 
 enum Recognition {
+    private static let preparation: Void = {
+        DispatchQueue.global(qos: .utility).async {
+            // Initialize Vision's models without capturing the user's screen.
+            guard let context = CGContext(data: nil, width: 256, height: 96, bitsPerComponent: 8,
+                                          bytesPerRow: 0, space: CGColorSpaceCreateDeviceGray(),
+                                          bitmapInfo: CGImageAlphaInfo.none.rawValue) else { return }
+            context.setFillColor(gray: 1, alpha: 1)
+            context.fill(CGRect(x: 0, y: 0, width: 256, height: 96))
+            let font = CTFontCreateWithName("Helvetica" as CFString, 26, nil)
+            let text = NSAttributedString(string: "Screen 屏幕 螢幕", attributes: [
+                NSAttributedString.Key(kCTFontAttributeName as String): font
+            ])
+            context.textPosition = CGPoint(x: 8, y: 38)
+            CTLineDraw(CTLineCreateWithAttributedString(text), context)
+            guard let image = context.makeImage() else { return }
+            _ = try? lines(using: VNImageRequestHandler(cgImage: image))
+        }
+    }()
+
+    static func prepare() { _ = preparation }
+
     static func lines(using handler: VNImageRequestHandler) throws -> [String] {
         let request = VNRecognizeTextRequest()
         request.recognitionLevel = .accurate
         request.recognitionLanguages = ["zh-Hans", "zh-Hant", "en-US"]
-        request.automaticallyDetectsLanguage = true
+        // Keep Vision on the supported languages. Automatic detection can take
+        // longer than the composition that requested the screen words.
+        request.automaticallyDetectsLanguage = false
         try handler.perform([request])
         return (request.results ?? []).compactMap { result in
             guard let match = result.topCandidates(1).first, match.confidence >= 0.45 else { return nil }
@@ -66,10 +90,11 @@ private final class DisplayReader: NSObject, SCStreamOutput, SCStreamDelegate {
                 as? [[SCStreamFrameInfo: Any]],
               let raw = data.first?[.status] as? Int, let status = SCFrameStatus(rawValue: raw)
         else { return }
-        if status == .idle || status == .started { return }
+        if status == .idle { return }
         do {
             let lines: [String]
-            if status == .complete, let buffer = sample.imageBuffer {
+            if status == .complete || status == .started {
+                guard let buffer = sample.imageBuffer else { return }
                 lines = try Recognition.lines(using: VNImageRequestHandler(cvPixelBuffer: buffer))
             } else {
                 lines = []

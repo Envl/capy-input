@@ -89,6 +89,7 @@ final class ScreenWordSuggestions: NSObject, ObservableObject {
             self?.compositionChanged()
         }
         self.cache = cache
+        Recognition.prepare()
         if redeploy { SquirrelMaintenance.reload(automatic: true) }
     }
 
@@ -123,19 +124,20 @@ final class ScreenWordSuggestions: NSObject, ObservableObject {
         }
     }
 
-    private var canCapture: Bool {
+    private var canUseScreenWords: Bool {
         sessionActive && !IsSecureEventInputEnabled() && SquirrelMaintenance.isSelected == true
-            && monitor?.isComposing == true
     }
 
+    private var canCapture: Bool { canUseScreenWords && monitor?.isComposing == true }
+
     private func compositionChanged() {
-        guard canCapture else { endComposition(); return }
+        guard canCapture else { endComposition(keepingSnapshot: canUseScreenWords); return }
         guard reader == nil else { return }
         let id = UUID()
         session = id
         let capture = ScreenReader(update: { [weak self] entries in
             guard let self, self.session == id else { return }
-            guard self.canCapture else { self.endComposition(); return }
+            guard self.canCapture else { self.endComposition(keepingSnapshot: self.canUseScreenWords); return }
             do { try self.cache?.replace(entries) }
             catch { self.fail(error) }
         }, status: { [weak self] count, error in
@@ -153,19 +155,19 @@ final class ScreenWordSuggestions: NSObject, ObservableObject {
     @objc private func screensChanged() { reader?.refresh() }
 
     @objc private func tick() {
-        guard canCapture else { endComposition(); return }
+        guard canCapture else { endComposition(keepingSnapshot: canUseScreenWords); return }
         do { try cache?.heartbeat() }
         catch { fail(error) }
     }
 
-    private func endComposition() {
+    private func endComposition(keepingSnapshot: Bool = false) {
+        cache?.suspend(keepingSnapshot: keepingSnapshot)
         guard let reader else { return }
         session = UUID()
         self.reader = nil
         timer?.invalidate()
         timer = nil
         reader.stop()
-        cache?.suspend()
     }
 
     func disarm() {

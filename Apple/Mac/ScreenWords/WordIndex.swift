@@ -175,6 +175,8 @@ final class WordIndex {
                     appendToken(range, code: code, isHan: false)
                     continue
                 }
+                // Short names can span more tokens than the tokenizer's phrase window.
+                addChinese(run)
                 tokens.string = run
                 let parts = tokens.tokens(for: run.startIndex..<run.endIndex)
                 // Keep individual words and short adjacent phrases on the same OCR line.
