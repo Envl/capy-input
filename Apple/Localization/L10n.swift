@@ -7,6 +7,7 @@ enum L10n {
         return bundle.localizedString(forKey: key, value: english, table: nil)
     }
 
+    static var accessibilitySettings: String { text("accessibilitySettings", "Open Accessibility Settings") }
     static var activeProfileChanged: String { text("activeProfileChanged", "The active profile changed. Try again.") }
     static var activities: String { text("activities", "Activities") }
     static var addOns: String { text("addOns", "Add-ons") }
@@ -20,6 +21,11 @@ enum L10n {
     static var appLanguage: String { text("appLanguage", "App language") }
     static var appName: String { text("appName", "Little Capybara") }
     static var applyChanges: String { text("applyChanges", "Apply changes") }
+    static var autoSwitchEnZh: String { text("autoSwitchEnZh", "Auto-switch English/Chinese by window") }
+    static var autoSwitchNeedsSquirrel: String { text("autoSwitchNeedsSquirrel", "Install Squirrel with Lua support and deploy at least one schema first.") }
+    static func autoSwitchPatchConflict(_ value: String) -> String {
+        String(format: text("autoSwitchPatchConflict", "Auto-switch setup conflicts with your existing configuration in %@."), locale: InterfaceLanguage.currentLocale, value)
+    }
     static var backToKeyboard: String { text("backToKeyboard", "Back to keyboard") }
     static var borderless: String { text("borderless", "Borderless") }
     static func bothDevicesChanged(_ value: String) -> String {

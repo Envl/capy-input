@@ -12,11 +12,13 @@ final class MacAppDelegate: NSObject, NSApplicationDelegate {
         Self.setDockIconVisible(!UserDefaults.standard.bool(forKey: Self.showMenuBarIconKey))
         MacDictionarySync.shared.start()
         ScreenWordSuggestions.shared.start()
+        RimeAutoSwitch.shared.start()
         _ = AppUpdater.shared
     }
 
     func applicationWillTerminate(_ notification: Notification) {
         ScreenWordSuggestions.shared.disarm()
+        RimeAutoSwitch.shared.disarm()
     }
 
     static func setDockIconVisible(_ visible: Bool) {

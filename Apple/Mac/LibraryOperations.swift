@@ -1,10 +1,5 @@
 import Foundation
 
-struct LibraryValidationFailure: LocalizedError {
-    let issues: [LibraryIssue]
-    var errorDescription: String? { issues.first.map { $0.path + " — " + $0.message } }
-}
-
 actor LibraryOperations {
     static let shared = LibraryOperations()
 
@@ -33,23 +28,6 @@ actor LibraryOperations {
         }.map(\.key)
     }
 
-    private func validateNative(_ files: [String: LibraryFile]) throws {
-        let install = try LibraryInstallation.current()
-        let fs = FileManager.default
-        let temporary = fs.temporaryDirectory.appendingPathComponent(UUID().uuidString)
-        let source = temporary.appendingPathComponent("source")
-        defer { try? fs.removeItem(at: temporary) }
-        try fs.createDirectory(at: source, withIntermediateDirectories: true)
-        let stock = try RimeLibrary.scan(install.library.stock)
-        for (path, file) in files where RimeLibrary.portable(path) && !RimeLibrary.isUserTable(path) {
-            let url = try RimeLibrary.checked(source, path)
-            try fs.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
-            let data = file.bundled ? (try stock[path].map { try Data(contentsOf: $0) } ?? file.data) : file.data
-            try data.write(to: url, options: .atomic)
-        }
-        _ = try ProfileImport.compile(folder: source, bundled: source, profiles: temporary.appendingPathComponent("profiles"), complete: true)
-    }
-
     static func deleting(_ text: String, from files: [String: LibraryFile], user: String) throws -> [String: LibraryFile] {
         var result = files
         for var dictionary in try dictionaries(in: files) {
@@ -71,35 +49,25 @@ actor LibraryOperations {
         try await exportLearned()
     }
 
-    func syncResources(resolutions: [LibraryResolution], automatic: Bool) async throws {
-        let root = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("LibraryCloud")
-        _ = try await LibraryCloud.shared.sync(.resources, root: root, resolutions: resolutions,
-            read: { try await self.resourceFiles() }, validate: { try await self.validateResources($0, changed: $1) },
-            apply: { try await self.applyResources(before: $0, after: $1, automatic: automatic) })
-    }
-
-    private func resourceFiles() throws -> [String: LibraryFile] {
-        try LibraryInstallation.current().library.inventory().filter { !RimeLibrary.isSnapshot($0.key) }
-    }
-    private func validateResources(_ resources: [String: LibraryFile], changed: Set<String>) throws {
-        // Selection logs are consumed directly by Lua. No schema needs compiling.
-        if changed.allSatisfy({ SelectedWords.recognizes($0) && (resources[$0] == nil || SelectedWords(resources[$0]) != nil) }) {
-            for path in changed {
-                guard let file = resources[path] else { continue }
-                guard file.data.count <= LibraryValidation.maximumFileBytes else { throw AppError(L10n.thisFileExceeds64MB) }
-            }
-            return
-        }
-        let issues = LibraryValidation.inspect(resources)
-        guard issues.isEmpty else { throw LibraryValidationFailure(issues: issues) }
-        try validateNative(resources)
-    }
-    private func applyResources(before: [String: LibraryFile], after: [String: LibraryFile], automatic: Bool) async throws {
+    func syncWordTables(resolutions: [LibraryResolution], automatic: Bool) async throws {
         let install = try LibraryInstallation.current()
-        let current = try install.library.inventory()
-        guard current.filter({ !RimeLibrary.isSnapshot($0.key) }) == before else { throw AppError(L10n.theLibraryChangedWhileSyncingTryAgain) }
-        let learned = current.filter { RimeLibrary.isSnapshot($0.key) }
-        try await install.apply(before: current, after: after.merging(learned) { _, word in word }, automatic: automatic)
+        let folder = install.library.profile
+        let root = URL.applicationSupportDirectory.appendingPathComponent("LibraryCloud")
+        _ = try await LibraryCloud.shared.sync(.wordTables, root: root, resolutions: resolutions,
+            read: { try RimeLibrary.selectedWordTables(at: folder) },
+            validate: { files, _ in try RimeLibrary.validateWordTables(files) },
+            apply: { before, after in
+                guard try LibraryInstallation.current().library.profile == folder else { throw AppError(L10n.activeProfileChanged) }
+                let updates = try RimeLibrary.wordTableUpdates(at: folder, before: before, after: after)
+                try LibraryInstallation.replace(updates, before: before)
+                let needsReload = updates.keys.contains { url in
+                    let name = url.lastPathComponent
+                    return !(after[name]?.data.starts(with: before[name]?.data ?? Data()) ?? false)
+                }
+                if install.squirrel && needsReload {
+                    await SquirrelMaintenance.reload(automatic: automatic)
+                }
+            })
     }
 
     func exportLearned(automatic: Bool = false) async throws {

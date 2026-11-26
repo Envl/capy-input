@@ -23,9 +23,9 @@ final class LibraryStatus: ObservableObject {
         if !force && !SquirrelMaintenance.canRunAutomatically { return }
         busy = true
         defer { busy = false }
-        if LearnedSyncService.selected == .icloud && (force || LibraryCloud.isDue(.resources)) {
+        if LearnedSyncService.selected == .icloud && (force || LibraryCloud.isDue(.wordTables)) {
             do {
-                try await LibraryOperations.shared.syncResources(resolutions: resolutions, automatic: !force)
+                try await LibraryOperations.shared.syncWordTables(resolutions: resolutions, automatic: !force)
                 resourceMessage = ""
                 conflict = nil
                 resolutions = []

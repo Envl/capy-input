@@ -41,6 +41,7 @@ struct SettingsView: View {
     private enum CredentialField { case endpoint, key }
     @FocusState private var credentialField: CredentialField?
     @ObservedObject private var screenWords = ScreenWordSuggestions.shared
+    @ObservedObject private var autoSwitch = RimeAutoSwitch.shared
     @AppStorage(MacAppDelegate.showMenuBarIconKey) private var showMenuBarIcon = false
     @State private var loginStatus = SMAppService.mainApp.status
     @State private var loginError: String?
@@ -71,6 +72,16 @@ struct SettingsView: View {
                     )) {} message: { Text(screenWords.error ?? "") }
                     if screenWords.needsPermission {
                         Button(L10n.screenRecordingSettings) { screenWords.openScreenRecordingSettings() }
+                    }
+                    Toggle(L10n.autoSwitchEnZh, isOn: Binding(
+                        get: { autoSwitch.isEnabled },
+                        set: { autoSwitch.setEnabled($0) }
+                    ))
+                    .alert(L10n.cannotCompleteThisChange, isPresented: Binding(
+                        get: { autoSwitch.error != nil }, set: { if !$0 { autoSwitch.error = nil } }
+                    )) {} message: { Text(autoSwitch.error ?? "") }
+                    if autoSwitch.isEnabled && autoSwitch.needsAccessibilityPermission {
+                        Button(L10n.accessibilitySettings) { autoSwitch.openAccessibilitySettings() }
                     }
                 }
                 Section {

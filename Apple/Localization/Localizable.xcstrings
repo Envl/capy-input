@@ -1,6 +1,98 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "accessibilitySettings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Accessibility Settings"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开辅助功能设置"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開啟輔助使用設定"
+          }
+        }
+      }
+    },
+    "autoSwitchEnZh": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto-switch English/Chinese by window"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按窗口自动切换中英文"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "依視窗自動切換中英文"
+          }
+        }
+      }
+    },
+    "autoSwitchNeedsSquirrel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Install Squirrel with Lua support and deploy at least one schema first."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请先安装支持 Lua 的鼠须管并至少部署一个输入方案。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "請先安裝支援 Lua 的鼠鬚管並至少部署一個輸入方案。"
+          }
+        }
+      }
+    },
+    "autoSwitchPatchConflict": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auto-switch setup conflicts with your existing configuration in %@."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动切换配置与 %@ 中的现有设置冲突。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動切換設定與 %@ 中的現有設定衝突。"
+          }
+        }
+      }
+    },
     "capyMembership": {
       "extractionState": "manual",
       "localizations": {

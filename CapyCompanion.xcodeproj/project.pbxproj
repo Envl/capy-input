@@ -14,6 +14,7 @@
 		09DD9DBFE17CBD856C090AEE /* InterfaceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827F29A4F3F3BA1034E7B2F3 /* InterfaceLanguage.swift */; };
 		0D54F259C851A51D65B70AC7 /* RimeInstallation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B565C1E143D7D7C10A9034EA /* RimeInstallation.swift */; };
 		20040BD0A1617D68C9282647 /* MacDictionarySync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E9F6A1B9E135802D5FA76 /* MacDictionarySync.swift */; };
+		27175E59CB42F6F0D60A7A34 /* RimeAutoSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79DF08135D022820724400C /* RimeAutoSwitch.swift */; };
 		417753BC79708FE3A32667B2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F917E42C576CA55586D3CF89 /* Localizable.xcstrings */; };
 		4F9E0FBED9BCD66BC88DAE23 /* LearnedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E755A536059837A0FF57FC /* LearnedDictionary.swift */; };
 		572BF8E6A953F3EED94B1128 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60026C7A3760A2AA11606815 /* AppError.swift */; };
@@ -35,16 +36,19 @@
 		8FB4DED58CA53695DC866BD5 /* ScreenReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6BF0B4661B09AC0624EB0E /* ScreenReader.swift */; };
 		90FC0A74FABC3C23B54637E4 /* SharedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1028FBE6EB9FD367EDC34D /* SharedSettings.swift */; };
 		978FD5AE2A64557DB2713713 /* MacAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F007E64ACAE5B223B54C313E /* MacAppDelegate.swift */; };
+		9D326E980232CBBD7803D763 /* AutoSwitch in Resources */ = {isa = PBXBuildFile; fileRef = 78657C35D31D12B478B32544 /* AutoSwitch */; };
 		A109AB0D2011011472FB4A0E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F75CB622A8A05363752233A8 /* PrivacyInfo.xcprivacy */; };
 		AD56360382A680D98882DFFA /* librime-dynamic.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC4E657B102DC3EC1BDFF263 /* librime-dynamic.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B041A6661F025EDFEBB2E668 /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = AC317C2332B9E50064F92F83 /* Yams */; };
 		BB09DB1426EF9A94399540D1 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 629647793FAF4BB763125119 /* Sparkle */; };
+		BB41DCE0A22BB1C95A7575CD /* WindowFocusMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0059C41BE8CD0124709AB927 /* WindowFocusMonitor.swift */; };
 		C7A10CF364C5E2B089E7F2C2 /* ScreenWordSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB5902F5F9ABCA70926EE7 /* ScreenWordSetup.swift */; };
 		C9C97D101ABC7896BD5AEBE0 /* librime-dynamic.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC4E657B102DC3EC1BDFF263 /* librime-dynamic.xcframework */; };
 		D09C1CCF00EE749418E4E17E /* RimeLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F366534186082CA0F113D9 /* RimeLibrary.swift */; };
 		D431A83B93165FCEE1E26077 /* LearnedWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605D492F0F2642AB523E9445 /* LearnedWordsView.swift */; };
 		D65074824FD343BB39208491 /* LibraryCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C237F4039BAFA576CD0C9 /* LibraryCloud.swift */; };
 		E67ACE5621E67756049A2349 /* AppUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AF77B75BAAC7444AF5068 /* AppUpdater.swift */; };
+		EC3AB67D3CE475FB939C33E5 /* AutoSwitchSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF1451EEDAC6EAC55DDF33 /* AutoSwitchSetup.swift */; };
 		EFE9BC8D5C8F44D1AA39A893 /* RimeSnapshotExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D10051DE0E76321C19A43F /* RimeSnapshotExport.swift */; };
 		FE6D8BA27C4917EBF2B70B87 /* ScreenWordSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAA190FB8493C38B0894492 /* ScreenWordSuggestions.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0059C41BE8CD0124709AB927 /* WindowFocusMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowFocusMonitor.swift; sourceTree = "<group>"; };
 		01E755A536059837A0FF57FC /* LearnedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedDictionary.swift; sourceTree = "<group>"; };
 		064AF77B75BAAC7444AF5068 /* AppUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdater.swift; sourceTree = "<group>"; };
 		089E9F6A1B9E135802D5FA76 /* MacDictionarySync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacDictionarySync.swift; sourceTree = "<group>"; };
@@ -83,12 +88,14 @@
 		60D16F4ADF35DB317978FEE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		65415410B4FB3D55E03D6257 /* capy-companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "capy-companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72807718806F70851243A1F0 /* ProfileImport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImport.swift; sourceTree = "<group>"; };
+		78657C35D31D12B478B32544 /* AutoSwitch */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AutoSwitch; path = Resources/AutoSwitch; sourceTree = SOURCE_ROOT; };
 		7F04DE51C6340D94C3F46AC8 /* Licenses */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Licenses; path = Generated/Rime/Licenses; sourceTree = SOURCE_ROOT; };
 		827F29A4F3F3BA1034E7B2F3 /* InterfaceLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceLanguage.swift; sourceTree = "<group>"; };
 		82880F8297B901819D15980D /* WordIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordIndex.swift; sourceTree = "<group>"; };
 		8367D90AD37136CE6B10F7BA /* LearnedSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnedSync.swift; sourceTree = "<group>"; };
 		8C0C237F4039BAFA576CD0C9 /* LibraryCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCloud.swift; sourceTree = "<group>"; };
 		8C1B9025D24F0AF54AA2893A /* CapyCompanionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapyCompanionApp.swift; sourceTree = "<group>"; };
+		A0AF1451EEDAC6EAC55DDF33 /* AutoSwitchSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoSwitchSetup.swift; sourceTree = "<group>"; };
 		B4AB5902F5F9ABCA70926EE7 /* ScreenWordSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenWordSetup.swift; sourceTree = "<group>"; };
 		B565C1E143D7D7C10A9034EA /* RimeInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimeInstallation.swift; sourceTree = "<group>"; };
 		B631F08E9A0FF0199E5DA8FB /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
@@ -99,6 +106,7 @@
 		BCCDFD92AE2CAFD657FED37D /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		D0B148913F7689C20CDC260F /* RimeSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimeSchema.swift; sourceTree = "<group>"; };
 		D6689793D534076BAE8D4777 /* LibraryInstallation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryInstallation.swift; sourceTree = "<group>"; };
+		D79DF08135D022820724400C /* RimeAutoSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RimeAutoSwitch.swift; sourceTree = "<group>"; };
 		DA1028FBE6EB9FD367EDC34D /* SharedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSettings.swift; sourceTree = "<group>"; };
 		F007E64ACAE5B223B54C313E /* MacAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacAppDelegate.swift; sourceTree = "<group>"; };
 		F70DE44DBBEABC823F2071E4 /* RimeEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RimeEngine.h; sourceTree = "<group>"; };
@@ -143,6 +151,7 @@
 		7728B01451CFD7F30B73CA0F = {
 			isa = PBXGroup;
 			children = (
+				78657C35D31D12B478B32544 /* AutoSwitch */,
 				7F04DE51C6340D94C3F46AC8 /* Licenses */,
 				60A6ED30B8DEC6657D8C1266 /* ScreenWords */,
 				93C3F3C85946FD89674D783B /* Bridge */,
@@ -152,6 +161,16 @@
 				556A5A56B18678F9426083C5 /* Frameworks */,
 				EA7BBF3E3A16BBF9632C972E /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		8AC4E147F515D3EA15B891ED /* AutoSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				A0AF1451EEDAC6EAC55DDF33 /* AutoSwitchSetup.swift */,
+				D79DF08135D022820724400C /* RimeAutoSwitch.swift */,
+				0059C41BE8CD0124709AB927 /* WindowFocusMonitor.swift */,
+			);
+			path = AutoSwitch;
 			sourceTree = "<group>";
 		};
 		93C3F3C85946FD89674D783B /* Bridge */ = {
@@ -183,6 +202,7 @@
 				B7D10051DE0E76321C19A43F /* RimeSnapshotExport.swift */,
 				B7D6C1712949BAD2C4EF8CFD /* Secret.swift */,
 				585206093AD76658B59C81D3 /* Sync.entitlements */,
+				8AC4E147F515D3EA15B891ED /* AutoSwitch */,
 				CFB4BD752C0B104D70892137 /* ScreenWords */,
 			);
 			name = Mac;
@@ -299,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				834BF27DA63610912302060A /* Assets.xcassets in Resources */,
+				9D326E980232CBBD7803D763 /* AutoSwitch in Resources */,
 				624D65F4FF0D4A714E7AA2B4 /* Licenses in Resources */,
 				417753BC79708FE3A32667B2 /* Localizable.xcstrings in Resources */,
 				A109AB0D2011011472FB4A0E /* PrivacyInfo.xcprivacy in Resources */,
@@ -340,6 +361,7 @@
 			files = (
 				572BF8E6A953F3EED94B1128 /* AppError.swift in Sources */,
 				E67ACE5621E67756049A2349 /* AppUpdater.swift in Sources */,
+				EC3AB67D3CE475FB939C33E5 /* AutoSwitchSetup.swift in Sources */,
 				63D38F451BE3EAA8399242DF /* CapyCompanionApp.swift in Sources */,
 				01A9178A3A53C898CDF5B93F /* CompositionMonitor.swift in Sources */,
 				09DD9DBFE17CBD856C090AEE /* InterfaceLanguage.swift in Sources */,
@@ -356,6 +378,7 @@
 				978FD5AE2A64557DB2713713 /* MacAppDelegate.swift in Sources */,
 				20040BD0A1617D68C9282647 /* MacDictionarySync.swift in Sources */,
 				87D8972E847B3F81697F0265 /* ProfileImport.swift in Sources */,
+				27175E59CB42F6F0D60A7A34 /* RimeAutoSwitch.swift in Sources */,
 				03677AED6E5844B9F17E058A /* RimeEngine.m in Sources */,
 				0D54F259C851A51D65B70AC7 /* RimeInstallation.swift in Sources */,
 				D09C1CCF00EE749418E4E17E /* RimeLibrary.swift in Sources */,
@@ -368,6 +391,7 @@
 				90FC0A74FABC3C23B54637E4 /* SharedSettings.swift in Sources */,
 				80946F79D540D2C7A12A4647 /* Snapshot.swift in Sources */,
 				048B721B8D55B36030227272 /* SyncClient.swift in Sources */,
+				BB41DCE0A22BB1C95A7575CD /* WindowFocusMonitor.swift in Sources */,
 				62A56385AE65680FA6BEC881 /* WordIndex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

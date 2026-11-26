@@ -127,6 +127,40 @@ struct RimeLibrary {
         return files
     }
 
+    /// User-selected words are shared by the phone keyboard and the Mac Lua reader.
+    static func selectedWordTables(at root: URL) throws -> [String: LibraryFile] {
+        let fs = FileManager.default
+        guard fs.fileExists(atPath: root.path) else { return [:] }
+        var files = [String: LibraryFile]()
+        for name in try fs.contentsOfDirectory(atPath: root.path) where SelectedWords.recognizes(name) {
+            let url = try checked(root, name)
+            let info = try url.resourceValues(forKeys: [.isRegularFileKey, .fileSizeKey])
+            guard info.isRegularFile == true, let size = info.fileSize, size <= 64 * 1024 * 1024 else {
+                throw AppError(L10n.invalidResource(name))
+            }
+            files[name] = LibraryFile(data: try Data(contentsOf: url), bundled: false)
+        }
+        return files
+    }
+
+    static func validateWordTables(_ files: [String: LibraryFile]) throws {
+        for (name, file) in files {
+            guard SelectedWords.recognizes(name), SelectedWords(file) != nil else {
+                throw AppError(L10n.invalidResource(name))
+            }
+        }
+    }
+
+    static func wordTableUpdates(at folder: URL, before: [String: LibraryFile], after: [String: LibraryFile]) throws -> [URL: Data?] {
+        try validateWordTables(after)
+        guard try selectedWordTables(at: folder) == before else { throw AppError(L10n.theLibraryChangedWhileSyncingTryAgain) }
+        var updates = [URL: Data?]()
+        for name in Set(before.keys).union(after.keys) where before[name] != after[name] {
+            updates.updateValue(after[name]?.data, forKey: try checked(folder, name))
+        }
+        return updates
+    }
+
     static func isUserTable(_ path: String) -> Bool {
         !path.contains("/") && path.hasSuffix(".tsv") && portable(path)
     }

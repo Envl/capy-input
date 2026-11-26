@@ -52,40 +52,6 @@ struct LibraryInstallation {
         }
     }
 
-    func apply(before: [String: LibraryFile], after: [String: LibraryFile], automatic: Bool = false) async throws {
-        try RimeLibrary.verify(after)
-        let stock = try RimeLibrary.scan(library.stock)
-        var changed = [String]()
-        for path in Set(before.keys).union(after.keys) {
-            if before[path]?.bundled == true && after[path]?.bundled == true { continue }
-            if before[path]?.data != after[path]?.data { changed.append(path) }
-        }
-        guard !changed.isEmpty else { return }
-        guard try library.inventory() == before else { throw AppError(L10n.rimeDataChangedRetryTheOperation) }
-        let resources = changed.filter { !RimeLibrary.isSnapshot($0) && !(library.runtime != nil && RimeLibrary.isUserTable($0)) }
-        var updates = [URL: Data?]()
-        let excluded = Set(stock.keys).subtracting(after.keys)
-        updates.updateValue(try PropertyListEncoder().encode(excluded), forKey: library.profile.appendingPathComponent(RimeLibrary.exclusionsName))
-        for path in changed {
-            if RimeLibrary.isSnapshot(path), let root = library.learned {
-                let url = try RimeLibrary.checked(root, String(path.dropFirst("Learned/".count)))
-                updates.updateValue(after[path]?.data, forKey: url)
-            } else if let root = library.runtime, RimeLibrary.isUserTable(path) {
-                let url = try RimeLibrary.checked(root, path)
-                updates.updateValue(after[path]?.data, forKey: url)
-            } else {
-                let file = after[path]
-                let keepStock = file?.bundled == true && stock[path] != nil
-                let url = try RimeLibrary.checked(library.profile, path)
-                updates.updateValue(keepStock ? nil : file?.data, forKey: url)
-            }
-        }
-        try Self.replace(updates, before: before)
-        if resources.contains(where: { !SelectedWords.recognizes($0) || !(after[$0]?.data.starts(with: before[$0]?.data ?? Data()) ?? false) }) && squirrel {
-            await SquirrelMaintenance.reload(automatic: automatic)
-        }
-    }
-
     // Capture originals and validate every destination before touching a live
     // installation. Roll back only files that still match our attempted edit.
     static func replace(_ updates: [URL: Data?], before: [String: LibraryFile]) throws {
