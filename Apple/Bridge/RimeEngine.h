@@ -35,6 +35,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readonly, nullable) NSString *fullInputCandidate;
 - (RimeSnapshot *)snapshotWithCandidateLimit:(NSUInteger)limit NS_SWIFT_NAME(snapshot(candidateLimit:));
 - (NSArray<NSString *> *)previewCandidatesForInput:(NSString *)input NS_SWIFT_NAME(previewCandidates(for:));
+// The first candidate only when it covers the entire spelling in the preview session.
+- (nullable NSString *)previewFullInputCandidateForInput:(NSString *)input NS_SWIFT_NAME(previewFullInputCandidate(for:));
+// Read the spelling of this specific candidate without changing the live composition.
+- (nullable NSString *)previewReadingForInput:(NSString *)input title:(NSString *)title index:(NSInteger)index
+    NS_SWIFT_NAME(previewReading(for:title:index:));
+// Highlight each native index in the preview session and return complete readings.
+- (NSDictionary<NSNumber *, NSString *> *)previewCompleteCandidatesForInput:(NSString *)input
+                                                                   indexes:(NSArray<NSNumber *> *)indexes
+    NS_SWIFT_NAME(previewCompleteCandidates(for:indexes:));
 - (NSArray<NSString *> *)previewCandidatesForInput:(NSString *)input limit:(NSUInteger)limit NS_SWIFT_NAME(previewCandidates(for:limit:));
 - (NSArray<NSString *> *)candidatesFromIndex:(NSUInteger)start limit:(NSUInteger)limit NS_SWIFT_NAME(candidates(from:limit:));
 - (NSArray<NSString *> *)previewCandidatesForInput:(NSString *)input start:(NSUInteger)start limit:(NSUInteger)limit NS_SWIFT_NAME(previewCandidates(for:from:limit:));

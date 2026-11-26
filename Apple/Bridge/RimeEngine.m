@@ -272,8 +272,8 @@ static BOOL processInUse = NO;
 - (NSArray *)candidates {
     return [self candidatesFromIndex:0 limit:32];
 }
-- (nullable NSString *)fullInputCandidateFromContext:(const RimeContext *)ctx rawInput:(const char *)input {
-    if (input && *input && _api->get_caret_pos(_session) == strlen(input) &&
+- (nullable NSString *)fullInputCandidateFromContext:(const RimeContext *)ctx rawInput:(const char *)input session:(RimeSessionId)session {
+    if (input && *input && _api->get_caret_pos(session) == strlen(input) &&
         ctx->menu.page_no == 0 && ctx->menu.highlighted_candidate_index == 0 && ctx->menu.num_candidates > 0 &&
         ctx->composition.sel_start == 0 && ctx->composition.sel_end == ctx->composition.length &&
         ctx->composition.cursor_pos == ctx->composition.length) {
@@ -284,7 +284,7 @@ static BOOL processInUse = NO;
 - (NSString *)fullInputCandidate {
     RIME_STRUCT(RimeContext, ctx);
     if (!_api->get_context(_session, &ctx)) return nil;
-    NSString *text = [self fullInputCandidateFromContext:&ctx rawInput:_api->get_input(_session)];
+    NSString *text = [self fullInputCandidateFromContext:&ctx rawInput:_api->get_input(_session) session:_session];
     _api->free_context(&ctx);
     return text;
 }
@@ -297,7 +297,7 @@ static BOOL processInUse = NO;
         RIME_STRUCT(RimeContext, ctx);
         if (_api->get_context(_session, &ctx)) {
             preedit = [self preeditFromContext:&ctx];
-            fullCandidate = [self fullInputCandidateFromContext:&ctx rawInput:rawInput];
+            fullCandidate = [self fullInputCandidateFromContext:&ctx rawInput:rawInput session:_session];
             _api->free_context(&ctx);
         }
     }
@@ -329,13 +329,13 @@ static BOOL processInUse = NO;
 - (NSArray *)previewCandidatesForInput:(NSString *)input limit:(NSUInteger)limit {
     return [self previewCandidatesForInput:input start:0 limit:limit];
 }
-- (NSArray *)previewCandidatesForInput:(NSString *)input start:(NSUInteger)start limit:(NSUInteger)limit {
-    if (!_session || !input.length) return @[];
+- (BOOL)preparePreviewForInput:(NSString *)input {
+    if (!_session || !input.length) return NO;
     if (!_previewSession) {
         _previewSession = _api->create_session();
         if (!_previewSession || !_api->select_schema(_previewSession, _schema.UTF8String)) {
             [self closePreview];
-            return @[];
+            return NO;
         }
 
         [self applyTraditional:_traditional session:_previewSession];
@@ -361,7 +361,64 @@ static BOOL processInUse = NO;
             [self captureCommitForSession:_previewSession learning:!hadComposition];
         }
     }
+    return YES;
+}
+- (NSArray *)previewCandidatesForInput:(NSString *)input start:(NSUInteger)start limit:(NSUInteger)limit {
+    if (![self preparePreviewForInput:input]) return @[];
     return [self candidatesForSession:_previewSession start:start limit:limit];
+}
+- (nullable NSString *)previewFullInputCandidateForInput:(NSString *)input {
+    if (![self preparePreviewForInput:input]) return nil;
+    const char *raw = _api->get_input(_previewSession);
+    if (!raw || strcmp(raw, input.UTF8String) != 0) return nil;
+    RIME_STRUCT(RimeContext, ctx);
+    if (!_api->get_context(_previewSession, &ctx)) return nil;
+    NSString *title = [self fullInputCandidateFromContext:&ctx rawInput:raw session:_previewSession];
+    _api->free_context(&ctx);
+    return title;
+}
+- (NSString *)previewReadingForInput:(NSString *)input title:(NSString *)title index:(NSInteger)index {
+    if (!RIME_API_AVAILABLE(_api, highlight_candidate) || ![self preparePreviewForInput:input]) return nil;
+    if (index < 0) {
+        NSUInteger found = [[self candidatesForSession:_previewSession start:0 limit:32] indexOfObject:title];
+        if (found == NSNotFound) return nil;
+        index = (NSInteger)found;
+    }
+    _api->highlight_candidate(_previewSession, (NSUInteger)index);
+    RIME_STRUCT(RimeContext, ctx);
+    if (!_api->get_context(_previewSession, &ctx)) return nil;
+    NSString *reading = nil;
+    int slot = ctx.menu.highlighted_candidate_index;
+    if (slot >= 0 && slot < ctx.menu.num_candidates && ctx.menu.page_no * ctx.menu.page_size + slot == index &&
+        ctx.menu.candidates[slot].text && [[self outputText:@(ctx.menu.candidates[slot].text)] isEqualToString:title]) {
+        reading = [self preeditFromContext:&ctx];
+    }
+    _api->free_context(&ctx);
+    return reading;
+}
+- (NSDictionary<NSNumber *, NSString *> *)previewCompleteCandidatesForInput:(NSString *)input
+                                                                   indexes:(NSArray<NSNumber *> *)indexes {
+    if (indexes.count == 0 || !RIME_API_AVAILABLE(_api, highlight_candidate) || ![self preparePreviewForInput:input]) return @{};
+    const char *raw = _api->get_input(_previewSession);
+    if (!raw || strcmp(raw, input.UTF8String) != 0 || _api->get_caret_pos(_previewSession) != strlen(raw)) return @{};
+    NSMutableDictionary *words = [NSMutableDictionary dictionaryWithCapacity:indexes.count];
+    for (NSNumber *index in indexes) {
+        if (index.integerValue < 0) continue;
+        // An already-highlighted candidate reports no change. Verify its actual slot below.
+        _api->highlight_candidate(_previewSession, index.unsignedIntegerValue);
+        RIME_STRUCT(RimeContext, ctx);
+        if (!_api->get_context(_previewSession, &ctx)) continue;
+        int slot = ctx.menu.highlighted_candidate_index;
+        if (slot >= 0 && slot < ctx.menu.num_candidates && ctx.menu.page_no >= 0 && ctx.menu.page_size > 0 &&
+            (NSUInteger)ctx.menu.page_no * (NSUInteger)ctx.menu.page_size + (NSUInteger)slot == index.unsignedIntegerValue &&
+            ctx.composition.sel_start == 0 && ctx.composition.sel_end == ctx.composition.length &&
+            ctx.composition.cursor_pos == ctx.composition.length && ctx.commit_text_preview) {
+            const char *title = ctx.menu.candidates[slot].text;
+            if (title && strcmp(title, ctx.commit_text_preview) == 0) words[index] = [self outputText:@(title)];
+        }
+        _api->free_context(&ctx);
+    }
+    return words;
 }
 // librime's standard translators do not honor a _no_learning option.
 // Backspace on an empty context reverts the just-created learning transaction;
